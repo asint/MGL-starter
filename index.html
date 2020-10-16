@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+            html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                background-color: #222;
+                color: #666;
+            }
+            body {
+            }
+            #makeGLCanvas {
+                width: 100%;
+                height: 100%;
+                touch-action: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="makeGLParent" style="position: relative; width: 100%; height: 100%;">
+            <canvas id="makeGLCanvas"></canvas>
+        </div>
+        <div id="makeGLTimes" style="position: relative; margin-top: -20px">
+        </div>
+        <div id="makeGLDebug" style="position: relative; width: 100%;">
+        </div>
+
+        <script src="./MGL/mgl.js"></script>
+        <script>var mGL = new MGL.Scene('makeGLCanvas', "./scene.json", 'makeGLDebug', 'makeGLTimes');</script>
+       
+    </body>
+</html>

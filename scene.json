@@ -1,0 +1,104 @@
+{
+ "scene":[
+    {
+      "type": "00",
+      "wake": true,
+      "fullscreen": true,
+      "vr": true
+    },
+    {
+      "type": "TM",
+      "parent": null,
+      "name": "TM0",
+      "position": [0,0,0],
+      "quaternion": [0,0,0,1],
+      "scale": [1,1,1],
+      "enabled": true
+    },
+    {
+      "type": "TM",
+      "parent": null,
+      "name": "TM-CAMTARGET",
+      "position": [0,0,0],
+      "quaternion": [0,0,0,1],
+      "scale": [1,1,1],
+      "enabled": true
+    },
+    {
+      "type": "TM",
+      "parent": "TM-CAMTARGET",
+      "name": "TM-CAM",
+      "position": [0,0,4.5],
+      "quaternion": [0,0,0,1],
+      "scale": [1,1,1],
+      "enabled": true
+    },
+    {
+      "type": "MH",
+      "parent": null,
+      "name": "MH1",
+      "position": [0,-1.5,0],
+      "quaternion": [0,0,0,1],
+      "scale": [2.0,0.2,2.0],
+      "enabled": true,
+      "maker": {"type": "Forge", "func": "MakeCube", "params":["Shiny"]} 
+    },
+    {
+      "type": "MH",
+      "parent": "TM0",
+      "name": "",
+      "position": [0,0,0],
+      "quaternion": [0,0,0,1],
+      "scale": [1,1,1],
+      "enabled": true,
+      "castShadows": true,
+      "maker": {"type": "Loader", "func": "./objs/MakeGL.gltf", "params":[]}
+    },
+    {
+      "type": "MA",
+      "name": "Shiny",
+      "base": [0.8,0.9,1],
+      "roughness": 0.4,
+      "metallic": 0.5,
+      "emissive": [0,0,0]
+    },
+    {
+      "type": "CA",
+      "parent": "TM-CAM",
+      "name": "CAM-R",
+      "position": [0,0,0],
+      "quaternion": [0,0,0,1]
+    },
+    {
+      "type": "LT",
+      "parent": null,
+      "name": "LT0",
+      "position": [100,120,70],
+      "quaternion": [0,0,0,1],
+      "color": [1,1,1],
+      "ambient": 0.3
+    }
+ ],
+ "ctrls": [
+    { "type" : "XRotY",
+      "target": "TM-CAMTARGET"
+    },
+    { "type" : "YTranF",
+      "target": "TM-CAM"
+    },
+    { "type" : "GToVR",
+      "target": "TM-CAM"
+    }   
+ ],
+ "functions": [
+    { "obj": "TM0",
+      "onUpdate": "this.rotateY(-.01);"
+    },
+    { "obj": "TM-CAMTARGET",
+      "onUpdate": "this.rotateY(.001);"
+    },
+    { "obj": "TM-CAM",
+      "onUpdate": "if(this.position.z < 3) this.position.z = 3; if(this.position.z > 6) this.position.z = 6; this.changed = true;"
+    }
+ ] 
+}
